@@ -22,9 +22,11 @@ services:
         python manage.py collectstatic --noinput
         # exec делает Gunicorn главным процессом контейнера.
         # Обратный слеш в конце строки продолжает эту же команду на следующей строке.
+        # Запустить приложение одним рабочим процессом (сервер общий для группы).
         exec gunicorn learning_log.wsgi:application \
           --bind 0.0.0.0:8000 \
-          --workers 2 \
+          --workers 1 \
+          --threads 4 \
           --timeout 60
     ports:
       # Опубликовать порт контейнера; адрес и внешний порт берутся из .env.
