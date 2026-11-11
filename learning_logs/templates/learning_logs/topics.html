@@ -1,0 +1,24 @@
+{% extends "learning_logs/base.html" %}
+{% block page_header %}
+    <h1 class="h3 mb-0">Topics</h1>
+{% endblock page_header %}
+{% block content %}
+<div class="card">
+    <div class="card-header bg-white d-flex align-items-center">
+        <span class="text-muted">Всего тем:
+            <span class="badge badge-primary badge-pill">{{ topics|length }}</span></span>
+    </div>
+    <ul class="list-group list-group-flush">
+        {% for topic in topics %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
+                <span class="badge badge-secondary badge-pill">{{ topic.entry_set.count }}</span>
+            </li>
+        {% empty %}
+            <li class="list-group-item text-muted">No topics have been added yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+<a class="btn btn-primary mt-4" href="{% url 'learning_logs:new_topic' %}">
+    + Add a new topic</a>
+{% endblock content %}

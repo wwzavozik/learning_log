@@ -1,0 +1,24 @@
+{% extends "learning_logs/base.html" %}
+{% block page_header %}
+    <h1 class="h3 mb-0">Log in</h1>
+{% endblock page_header %}
+{% block content %}
+<div class="row">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-body">
+                {% if form.errors %}
+                    <div class="alert alert-danger">Your username and password
+                        didn't match. Please try again.</div>
+                {% endif %}
+                <form method="post" action="{% url 'users:login' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button name="submit" class="btn btn-primary btn-block">log in</button>
+                    <input type="hidden" name="next" value="{% url 'learning_logs:index' %}"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

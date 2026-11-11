@@ -1,0 +1,21 @@
+{% extends "learning_logs/base.html" %}
+{% block page_header %}
+    <h1 class="h3 mb-0">Add a new topic</h1>
+{% endblock page_header %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <p class="text-muted">Придумайте короткое название темы — например,
+                    «Chess» или «Rock Climbing».</p>
+                <form action="{% url 'learning_logs:new_topic' %}" method='post'>
+                {% csrf_token %}
+                    {{ form.as_p }}
+                    <button name="submit" class="btn btn-primary">add topic</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

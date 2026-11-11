@@ -1,0 +1,15 @@
+{% extends "learning_logs/base.html" %}
+{% block page_header %}
+    <h1 class="h3 mb-0">Welcome to Learning Log</h1>
+{% endblock page_header %}
+{% block content %}
+<div class="jumbotron bg-white border rounded p-5">
+    <h1 class="display-4">📓 Learning Log</h1>
+    <p class="lead">Learning Log helps you!</p>
+    <hr class="my-4">
+    <p class="mb-4">Записывайте всё, что изучаете: создайте тему — и ведите
+        по ней дневник наблюдений, заметок и открытий.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'learning_logs:topics' %}">
+        Go to Topics &raquo;</a>
+</div>
+{% endblock content %}

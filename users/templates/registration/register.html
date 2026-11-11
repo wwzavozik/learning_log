@@ -1,0 +1,22 @@
+{% extends "learning_logs/base.html" %}
+{% block page_header %}
+    <h1 class="h3 mb-0">Register</h1>
+{% endblock page_header %}
+{% block content %}
+<div class="row">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <p class="text-muted">Пароль должен содержать минимум 8 символов
+                    и не быть слишком простым.</p>
+                <form method="post" action="{% url 'users:register' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button name="submit" class="btn btn-primary btn-block">register</button>
+                    <input type="hidden" name="next" value="{% url 'learning_logs:index' %}"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

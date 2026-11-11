@@ -1,0 +1,16 @@
+{% extends "learning_logs/base.html" %}
+{% block page_header %}
+    <h1 class="h3 mb-0">Add a new entry</h1>
+{% endblock page_header %}
+{% block content %}
+<p class="mb-4">Тема: <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a></p>
+<div class="card">
+    <div class="card-body">
+        <form action="{% url 'learning_logs:new_entry' topic.id %}" method='post'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button name='submit' class="btn btn-primary">add entry</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
